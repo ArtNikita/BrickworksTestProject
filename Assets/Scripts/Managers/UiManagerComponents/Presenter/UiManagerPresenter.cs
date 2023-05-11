@@ -5,7 +5,10 @@ namespace Managers.UiManagerComponents.Presenter
 {
     public class UiManagerPresenter : IUiManagerPresenter
     {
-        private IUiManager _view;
+        private const int PointsToEarnPerClick = 1;
+        
+        private readonly IUiManager _view;
+        private int _earnedPoints;
 
         public UiManagerPresenter(IUiManager view)
         {
@@ -30,7 +33,8 @@ namespace Managers.UiManagerComponents.Presenter
 
         private void OnEarnPointsButtonClicked(object sender, EventArgs eventArgs)
         {
-            // todo
+            _earnedPoints += PointsToEarnPerClick;
+            _view.UpdateCurrentPoints(_earnedPoints);
         }
         
         private void OnLearnCurrentButtonClicked(object sender, EventArgs e)
