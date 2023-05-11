@@ -7,9 +7,9 @@ namespace SkillButtonComponents.Presenter
     public class SkillButtonPresenter : ISkillButtonPresenter
     {
         private readonly ISkillButtonView _view;
-        private readonly UiManager _uiManager;
+        private readonly IUiManager _uiManager;
 
-        public SkillButtonPresenter(ISkillButtonView view, UiManager uiManager)
+        public SkillButtonPresenter(ISkillButtonView view, IUiManager uiManager)
         {
             _view = view;
             _uiManager = uiManager;
@@ -35,12 +35,12 @@ namespace SkillButtonComponents.Presenter
         {
             _view.Select();
             _uiManager.UpdateCurrentPrice(_view.GetPrice());
-            if (_uiManager.SelectedButton != null && _uiManager.SelectedButton != _view)
+            if (_uiManager.GetSelectedButton() != null && _uiManager.GetSelectedButton() != _view)
             {
-                _uiManager.SelectedButton.Unselect();
+                _uiManager.GetSelectedButton().Unselect();
             }
 
-            _uiManager.SelectedButton = _view;
+            _uiManager.SetSelectedButton(_view);
         }
     }
 }

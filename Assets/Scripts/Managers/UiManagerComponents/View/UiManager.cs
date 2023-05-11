@@ -15,12 +15,12 @@ namespace Managers.UiManagerComponents.View
         [SerializeField] private Button learnCurrentButton;
         [SerializeField] private Button forgetCurrentButton;
         [SerializeField] private Button forgetAllButton;
-        public ISkillButtonView SelectedButton;
         public event EventHandler EarnPoints;
         public event EventHandler LearnCurrent;
         public event EventHandler ForgetCurrent;
         public event EventHandler ForgetAll;
 
+        private ISkillButtonView _selectedButton;
         private IUiManagerPresenter _presenter;
 
         private void Awake()
@@ -51,6 +51,16 @@ namespace Managers.UiManagerComponents.View
         public void UpdateCurrentPoints(int points)
         {
             currentPoints.text = $"{points} Points";
+        }
+
+        public ISkillButtonView GetSelectedButton()
+        {
+            return _selectedButton;
+        }
+
+        public void SetSelectedButton(ISkillButtonView view)
+        {
+            _selectedButton = view;
         }
 
         private void OnEarnPoints()

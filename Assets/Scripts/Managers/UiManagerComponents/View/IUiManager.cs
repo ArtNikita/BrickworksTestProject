@@ -1,4 +1,5 @@
 using System;
+using SkillButtonComponents.View;
 
 namespace Managers.UiManagerComponents.View
 {
@@ -11,5 +12,7 @@ namespace Managers.UiManagerComponents.View
 
         void UpdateCurrentPrice(int price);
         void UpdateCurrentPoints(int points);
+        ISkillButtonView GetSelectedButton();
+        void SetSelectedButton(ISkillButtonView view);
     }
 }
