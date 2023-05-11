@@ -15,6 +15,8 @@ namespace View
 
         public bool isConnected;
 
+        [SerializeField] private GameObject selector;
+
         private ISkillButtonPresenter _presenter;
         private Button _button;
 
@@ -47,6 +49,16 @@ namespace View
         public void ChangeColor(Color color)
         {
             gameObject.GetComponent<Image>().color = color;
+        }
+
+        public void Select()
+        {
+            selector.SetActive(true);
+        }
+
+        public void Unselect()
+        {
+            selector.SetActive(false);
         }
     }
 }

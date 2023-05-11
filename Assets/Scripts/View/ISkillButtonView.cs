@@ -7,5 +7,7 @@ namespace View
     {
         public event EventHandler Clicked;
         void ChangeColor(Color color);
+        void Select();
+        void Unselect();
     }
 }

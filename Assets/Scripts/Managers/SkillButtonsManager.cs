@@ -56,7 +56,7 @@ namespace Managers
                 if (skillButton.isBase)
                 {
                     skillButton.isLearned = true;
-                    transform.localScale *= Constants.BaseSkillScaleRatio;
+                    skillButton.transform.localScale *= Constants.BaseSkillScaleRatio;
                 }
 
                 var startColor = skillButton.isLearned ? Constants.LearnedSkillColor : Constants.UnlearnedSkillColor;

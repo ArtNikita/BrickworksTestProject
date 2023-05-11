@@ -26,6 +26,7 @@ namespace Presenter
         private void OnSkillButtonClicked(object sender, EventArgs eventArgs)
         {
             _view.ChangeColor(Constants.LearnedSkillColor);
+            _view.Select();
         }
     }
 }
