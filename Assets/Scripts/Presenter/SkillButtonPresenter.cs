@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using View;
 
 namespace Presenter
@@ -6,16 +7,18 @@ namespace Presenter
     public class SkillButtonPresenter : ISkillButtonPresenter
     {
         private readonly ISkillButtonView _view;
-        private const int SkillButtonChangeColorActionCode = 0;
+        private readonly UiManager _uiManager;
 
-        public SkillButtonPresenter(ISkillButtonView view)
+        public SkillButtonPresenter(ISkillButtonView view, UiManager uiManager)
         {
             _view = view;
+            _uiManager = uiManager;
         }
 
         public void Initialize()
         {
             _view.Clicked += OnSkillButtonClicked;
+            if (_view.IsBase()) SelectButton();
         }
 
         public void Uninitialize()
@@ -25,8 +28,19 @@ namespace Presenter
 
         private void OnSkillButtonClicked(object sender, EventArgs eventArgs)
         {
-            _view.ChangeColor(Constants.LearnedSkillColor);
+            SelectButton();
+        }
+
+        private void SelectButton()
+        {
             _view.Select();
+            _uiManager.UpdateCurrentPrice(_view.GetPrice());
+            if (_uiManager.SelectedButton != null && _uiManager.SelectedButton != _view)
+            {
+                _uiManager.SelectedButton.Unselect();
+            }
+
+            _uiManager.SelectedButton = _view;
         }
     }
 }

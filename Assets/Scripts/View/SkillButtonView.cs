@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Managers;
 using Presenter;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,8 @@ namespace View
     {
         public bool isBase;
         public List<SkillButtonView> connectedSkills;
-        public int price;
         public bool isLearned;
+        [SerializeField] private int price;
 
         public bool isConnected;
 
@@ -23,7 +24,7 @@ namespace View
         public void Awake()
         {
             InitButton();
-            _presenter = new SkillButtonPresenter(this);
+            _presenter = new SkillButtonPresenter(this, FindObjectOfType<UiManager>());
             _presenter.Initialize();
         }
 
@@ -59,6 +60,21 @@ namespace View
         public void Unselect()
         {
             selector.SetActive(false);
+        }
+
+        public int GetPrice()
+        {
+            return price;
+        }
+
+        public bool IsBase()
+        {
+            return isBase;
+        }
+
+        public bool IsLearned()
+        {
+            return isLearned;
         }
     }
 }

@@ -9,5 +9,8 @@ namespace View
         void ChangeColor(Color color);
         void Select();
         void Unselect();
+        int GetPrice();
+        bool IsBase();
+        bool IsLearned();
     }
 }
