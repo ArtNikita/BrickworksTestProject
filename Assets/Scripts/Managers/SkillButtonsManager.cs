@@ -112,5 +112,20 @@ namespace Managers
 
             return false;
         }
+
+        public int ForgetAllSkills()
+        {
+            var sumPrice = 0;
+            foreach (var skillButton in _skillButtons)
+            {
+                if (skillButton.IsLearned() && !skillButton.IsBase())
+                {
+                    sumPrice += skillButton.GetPrice();
+                    skillButton.OnForgetCurrentClicked();
+                }
+            }
+
+            return sumPrice;
+        }
     }
 }

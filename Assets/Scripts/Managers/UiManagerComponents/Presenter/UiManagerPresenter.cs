@@ -88,7 +88,9 @@ namespace Managers.UiManagerComponents.Presenter
 
         private void OnForgetAllButtonClicked(object sender, EventArgs e)
         {
-            // todo
+            _earnedPoints += _skillButtonsManager.ForgetAllSkills();
+            _view.UpdateCurrentPoints(_earnedPoints);
+            SkillButtonClicked(_selectedButton);
         }
     }
 }
