@@ -46,6 +46,7 @@ namespace Managers.UiManagerComponents.Presenter
         private void SetupButtonsEnabling()
         {
             SetupLearnCurrentButtonEnabling();
+            SetupForgetCurrentButtonEnabling();
         }
 
         private void SetupLearnCurrentButtonEnabling()
@@ -55,6 +56,10 @@ namespace Managers.UiManagerComponents.Presenter
             );
         }
 
+        private void SetupForgetCurrentButtonEnabling()
+        {
+            _view.SetForgetCurrentButtonInteractable(_skillButtonsManager.SkillButtonCanBeForgotten(_selectedButton));
+        }
 
         private void OnEarnPointsButtonClicked(object sender, EventArgs eventArgs)
         {

@@ -82,5 +82,28 @@ namespace Managers
             if (skillButton.IsLearned() || skillButton.GetPrice() > earnedPoints) return false;
             return skillButton.GetConnectedSkills().Any(connectedSkill => connectedSkill.IsLearned());
         }
+
+        public bool SkillButtonCanBeForgotten(ISkillButtonView skillButton)
+        {
+            if (skillButton.IsBase()) return false;
+            if (!skillButton.IsLearned()) return false;
+            var visitedButtons = new HashSet<ISkillButtonView> { skillButton };
+            return !CheckIfNeighborSkillButtonsConnectedToBase(skillButton, visitedButtons);
+        }
+
+        private bool CheckIfNeighborSkillButtonsConnectedToBase(
+            ISkillButtonView skillButton, HashSet<ISkillButtonView> visitedButtons
+        )
+        {
+            visitedButtons.Add(skillButton);
+            foreach (var neighborSkillButton in skillButton.GetConnectedSkills())
+            {
+                if (visitedButtons.Contains(neighborSkillButton)) continue;
+                if (neighborSkillButton.IsBase()) return true;
+                var a = CheckIfNeighborSkillButtonsConnectedToBase(neighborSkillButton, visitedButtons);
+            }
+
+            return false;
+        }
     }
 }
