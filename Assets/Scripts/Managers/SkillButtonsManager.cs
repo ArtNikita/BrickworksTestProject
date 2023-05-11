@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Managers.UiManagerComponents.View;
 using SkillButtonComponents.View;
 using UnityEngine;
 
@@ -19,6 +21,17 @@ namespace Managers
         {
             ConnectToOtherSkillButtonsWithLines();
             InitSkillButtonsStartParams();
+            SelectBaseButton();
+        }
+
+        private void SelectBaseButton()
+        {
+            foreach (var skillButton in _skillButtons.Where(skillButton => skillButton.isBase))
+            {
+                skillButton.Select();
+                FindObjectOfType<UiManager>().OnSkillButtonSelected(skillButton);
+                return;
+            }
         }
 
         private void NormalizeConnectedSkillsCollections()

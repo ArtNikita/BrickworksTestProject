@@ -18,7 +18,6 @@ namespace SkillButtonComponents.Presenter
         public void Initialize()
         {
             _view.Clicked += OnSkillButtonClicked;
-            if (_view.IsBase()) SelectButton();
         }
 
         public void Uninitialize()

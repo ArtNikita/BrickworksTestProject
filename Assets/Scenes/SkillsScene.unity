@@ -3138,10 +3138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPrice: {fileID: 1450797969}
   currentPoints: {fileID: 737598586}
-  earnPointsButton: {fileID: 0}
-  learnCurrentButton: {fileID: 0}
-  forgetCurrentButton: {fileID: 0}
-  forgetAllButton: {fileID: 0}
+  earnPointsButton: {fileID: 156443253}
+  learnCurrentButton: {fileID: 1484268038}
+  forgetCurrentButton: {fileID: 1557488274}
+  forgetAllButton: {fileID: 1421440103}
 --- !u!114 &2119945244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9028772300804004189, guid: 41b93b548cc4b45cd941f586f6944e10, type: 3}

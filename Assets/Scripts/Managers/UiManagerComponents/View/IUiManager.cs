@@ -11,6 +11,7 @@ namespace Managers.UiManagerComponents.View
         public event EventHandler ForgetAll;
 
         void UpdateCurrentPoints(int points);
+        void UpdateCurrentPrice(int price);
         void OnSkillButtonSelected(ISkillButtonView view);
     }
 }

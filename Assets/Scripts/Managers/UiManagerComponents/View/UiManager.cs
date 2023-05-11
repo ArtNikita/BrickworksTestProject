@@ -20,13 +20,12 @@ namespace Managers.UiManagerComponents.View
         public event EventHandler ForgetCurrent;
         public event EventHandler ForgetAll;
 
-        private ISkillButtonView _selectedButton;
         private IUiManagerPresenter _presenter;
 
         private void Awake()
         {
             InitButtons();
-            _presenter = new UiManagerPresenter(this);
+            _presenter = new UiManagerPresenter(this, FindObjectOfType<SkillButtonsManager>());
             _presenter.Initialize();
         }
 
@@ -55,9 +54,7 @@ namespace Managers.UiManagerComponents.View
 
         public void OnSkillButtonSelected(ISkillButtonView skillButton)
         {
-            UpdateCurrentPrice(skillButton.GetPrice());
-            if (_selectedButton != null && _selectedButton != skillButton) _selectedButton.Unselect();
-            _selectedButton = skillButton;
+            _presenter.SkillButtonClicked(skillButton);
         }
 
         private void OnEarnPoints()

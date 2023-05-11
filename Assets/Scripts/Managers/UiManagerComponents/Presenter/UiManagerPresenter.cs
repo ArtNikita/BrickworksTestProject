@@ -1,18 +1,22 @@
 using System;
 using Managers.UiManagerComponents.View;
+using SkillButtonComponents.View;
 
 namespace Managers.UiManagerComponents.Presenter
 {
     public class UiManagerPresenter : IUiManagerPresenter
     {
         private const int PointsToEarnPerClick = 1;
-        
+
+        private readonly SkillButtonsManager _skillButtonsManager;
         private readonly IUiManager _view;
+        private ISkillButtonView _selectedButton;
         private int _earnedPoints;
 
-        public UiManagerPresenter(IUiManager view)
+        public UiManagerPresenter(IUiManager view, SkillButtonsManager skillButtonsManager)
         {
             _view = view;
+            _skillButtonsManager = skillButtonsManager;
         }
 
         public void Initialize()
@@ -31,17 +35,24 @@ namespace Managers.UiManagerComponents.Presenter
             _view.ForgetAll -= OnForgetAllButtonClicked;
         }
 
+        public void SkillButtonClicked(ISkillButtonView skillButton)
+        {
+            _view.UpdateCurrentPrice(skillButton.GetPrice());
+            if (_selectedButton != null && _selectedButton != skillButton) _selectedButton.Unselect();
+            _selectedButton = skillButton;
+        }
+
         private void OnEarnPointsButtonClicked(object sender, EventArgs eventArgs)
         {
             _earnedPoints += PointsToEarnPerClick;
             _view.UpdateCurrentPoints(_earnedPoints);
         }
-        
+
         private void OnLearnCurrentButtonClicked(object sender, EventArgs e)
         {
             //todo
         }
-        
+
         private void OnForgetCurrentButtonClicked(object sender, EventArgs e)
         {
             // todo
