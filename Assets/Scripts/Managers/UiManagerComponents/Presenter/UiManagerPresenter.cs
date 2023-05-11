@@ -70,7 +70,10 @@ namespace Managers.UiManagerComponents.Presenter
 
         private void OnLearnCurrentButtonClicked(object sender, EventArgs e)
         {
-            //todo
+            _selectedButton.OnLearnCurrentClicked();
+            _earnedPoints -= _selectedButton.GetPrice();
+            _view.UpdateCurrentPoints(_earnedPoints);
+            _view.SetForgetCurrentButtonInteractable(true);
         }
 
         private void OnForgetCurrentButtonClicked(object sender, EventArgs e)

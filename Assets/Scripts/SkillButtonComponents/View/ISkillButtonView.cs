@@ -13,6 +13,8 @@ namespace SkillButtonComponents.View
         int GetPrice();
         bool IsBase();
         bool IsLearned();
+        void OnLearnCurrentClicked();
+        void SetLearned(bool isLearnedNewValue);
         List<ISkillButtonView> GetConnectedSkills();
     }
 }

@@ -75,6 +75,16 @@ namespace SkillButtonComponents.View
             return isLearned;
         }
 
+        public void OnLearnCurrentClicked()
+        {
+            _presenter.OnLearnCurrentClicked();
+        }
+
+        public void SetLearned(bool isLearnedNewValue)
+        {
+            isLearned = isLearnedNewValue;
+        }
+
         public List<ISkillButtonView> GetConnectedSkills()
         {
             return new List<ISkillButtonView>(connectedSkills);
