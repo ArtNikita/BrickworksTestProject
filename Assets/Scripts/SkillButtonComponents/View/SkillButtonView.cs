@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Managers;
-using Presenter;
+using Managers.UiManagerComponents.View;
+using SkillButtonComponents.Presenter;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace View
+namespace SkillButtonComponents.View
 {
     public class SkillButtonView : MonoBehaviour, ISkillButtonView
     {
@@ -13,13 +13,11 @@ namespace View
         public List<SkillButtonView> connectedSkills;
         public bool isLearned;
         [SerializeField] private int price;
-
         public bool isConnected;
-
         [SerializeField] private GameObject selector;
-
-        private ISkillButtonPresenter _presenter;
         private Button _button;
+        
+        private ISkillButtonPresenter _presenter;
 
         public void Awake()
         {

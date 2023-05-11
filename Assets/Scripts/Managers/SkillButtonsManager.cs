@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using SkillButtonComponents.View;
 using UnityEngine;
-using View;
 
 namespace Managers
 {

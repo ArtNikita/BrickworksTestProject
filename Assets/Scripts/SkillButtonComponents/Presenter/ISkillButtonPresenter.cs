@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Presenter
+namespace SkillButtonComponents.Presenter
 {
     public interface ISkillButtonPresenter
     {

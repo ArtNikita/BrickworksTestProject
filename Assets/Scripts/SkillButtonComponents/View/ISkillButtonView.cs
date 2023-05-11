@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace View
+namespace SkillButtonComponents.View
 {
     public interface ISkillButtonView
     {

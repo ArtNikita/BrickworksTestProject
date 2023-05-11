@@ -1,8 +1,8 @@
 using System;
-using Managers;
-using View;
+using Managers.UiManagerComponents.View;
+using SkillButtonComponents.View;
 
-namespace Presenter
+namespace SkillButtonComponents.Presenter
 {
     public class SkillButtonPresenter : ISkillButtonPresenter
     {
