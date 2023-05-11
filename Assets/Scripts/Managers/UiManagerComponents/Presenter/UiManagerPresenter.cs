@@ -74,11 +74,16 @@ namespace Managers.UiManagerComponents.Presenter
             _earnedPoints -= _selectedButton.GetPrice();
             _view.UpdateCurrentPoints(_earnedPoints);
             _view.SetForgetCurrentButtonInteractable(true);
+            _view.SetLearnCurrentButtonInteractable(false);
         }
 
         private void OnForgetCurrentButtonClicked(object sender, EventArgs e)
         {
-            // todo
+            _selectedButton.OnForgetCurrentClicked();
+            _earnedPoints += _selectedButton.GetPrice();
+            _view.UpdateCurrentPoints(_earnedPoints);
+            _view.SetForgetCurrentButtonInteractable(false);
+            _view.SetLearnCurrentButtonInteractable(true);
         }
 
         private void OnForgetAllButtonClicked(object sender, EventArgs e)

@@ -5,5 +5,6 @@ namespace SkillButtonComponents.Presenter
         void Initialize();
         void Uninitialize();
         void OnLearnCurrentClicked();
+        void OnForgetCurrentClicked();
     }
 }

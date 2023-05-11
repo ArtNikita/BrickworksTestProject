@@ -16,5 +16,6 @@ namespace SkillButtonComponents.View
         void OnLearnCurrentClicked();
         void SetLearned(bool isLearnedNewValue);
         List<ISkillButtonView> GetConnectedSkills();
+        void OnForgetCurrentClicked();
     }
 }

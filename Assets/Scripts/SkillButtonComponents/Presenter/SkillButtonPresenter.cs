@@ -31,6 +31,12 @@ namespace SkillButtonComponents.Presenter
             _view.SetLearned(true);
         }
 
+        public void OnForgetCurrentClicked()
+        {
+            _view.ChangeColor(Constants.UnlearnedSkillColor);
+            _view.SetLearned(false);
+        }
+
         private void OnSkillButtonClicked(object sender, EventArgs eventArgs)
         {
             SelectButton();

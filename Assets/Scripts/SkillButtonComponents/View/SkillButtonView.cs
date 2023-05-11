@@ -89,5 +89,10 @@ namespace SkillButtonComponents.View
         {
             return new List<ISkillButtonView>(connectedSkills);
         }
+
+        public void OnForgetCurrentClicked()
+        {
+            _presenter.OnForgetCurrentClicked();
+        }
     }
 }

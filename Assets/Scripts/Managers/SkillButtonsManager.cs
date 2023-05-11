@@ -87,8 +87,14 @@ namespace Managers
         {
             if (skillButton.IsBase()) return false;
             if (!skillButton.IsLearned()) return false;
-            var visitedButtons = new HashSet<ISkillButtonView> { skillButton };
-            return !CheckIfNeighborSkillButtonsConnectedToBase(skillButton, visitedButtons);
+            foreach (var connectedSkill in skillButton.GetConnectedSkills())
+            {
+                if (!connectedSkill.IsLearned() || connectedSkill.IsBase()) continue;
+                var visitedButtons = new HashSet<ISkillButtonView> { skillButton };
+                if (!CheckIfNeighborSkillButtonsConnectedToBase(connectedSkill, visitedButtons)) return false;
+            }
+
+            return true;
         }
 
         private bool CheckIfNeighborSkillButtonsConnectedToBase(
@@ -98,9 +104,10 @@ namespace Managers
             visitedButtons.Add(skillButton);
             foreach (var neighborSkillButton in skillButton.GetConnectedSkills())
             {
-                if (visitedButtons.Contains(neighborSkillButton)) continue;
+                if (!neighborSkillButton.IsLearned() || visitedButtons.Contains(neighborSkillButton)) continue;
                 if (neighborSkillButton.IsBase()) return true;
-                var a = CheckIfNeighborSkillButtonsConnectedToBase(neighborSkillButton, visitedButtons);
+                var recCheck = CheckIfNeighborSkillButtonsConnectedToBase(neighborSkillButton, visitedButtons);
+                if (recCheck) return true;
             }
 
             return false;
