@@ -53,14 +53,11 @@ namespace Managers.UiManagerComponents.View
             currentPoints.text = $"{points} Points";
         }
 
-        public ISkillButtonView GetSelectedButton()
+        public void OnSkillButtonSelected(ISkillButtonView skillButton)
         {
-            return _selectedButton;
-        }
-
-        public void SetSelectedButton(ISkillButtonView view)
-        {
-            _selectedButton = view;
+            UpdateCurrentPrice(skillButton.GetPrice());
+            if (_selectedButton != null && _selectedButton != skillButton) _selectedButton.Unselect();
+            _selectedButton = skillButton;
         }
 
         private void OnEarnPoints()

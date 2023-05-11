@@ -10,9 +10,7 @@ namespace Managers.UiManagerComponents.View
         public event EventHandler ForgetCurrent;
         public event EventHandler ForgetAll;
 
-        void UpdateCurrentPrice(int price);
         void UpdateCurrentPoints(int points);
-        ISkillButtonView GetSelectedButton();
-        void SetSelectedButton(ISkillButtonView view);
+        void OnSkillButtonSelected(ISkillButtonView view);
     }
 }

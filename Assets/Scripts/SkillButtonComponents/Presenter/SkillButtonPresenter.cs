@@ -34,13 +34,7 @@ namespace SkillButtonComponents.Presenter
         private void SelectButton()
         {
             _view.Select();
-            _uiManager.UpdateCurrentPrice(_view.GetPrice());
-            if (_uiManager.GetSelectedButton() != null && _uiManager.GetSelectedButton() != _view)
-            {
-                _uiManager.GetSelectedButton().Unselect();
-            }
-
-            _uiManager.SetSelectedButton(_view);
+            _uiManager.OnSkillButtonSelected(_view);
         }
     }
 }
