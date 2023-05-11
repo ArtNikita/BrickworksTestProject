@@ -76,5 +76,11 @@ namespace Managers
                 skillButton.ChangeColor(startColor);
             }
         }
+
+        public bool SkillButtonCanBeLearned(ISkillButtonView skillButton, int earnedPoints)
+        {
+            if (skillButton.IsLearned() || skillButton.GetPrice() > earnedPoints) return false;
+            return skillButton.GetConnectedSkills().Any(connectedSkill => connectedSkill.IsLearned());
+        }
     }
 }

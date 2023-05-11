@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SkillButtonComponents.View
@@ -12,5 +13,6 @@ namespace SkillButtonComponents.View
         int GetPrice();
         bool IsBase();
         bool IsLearned();
+        List<ISkillButtonView> GetConnectedSkills();
     }
 }

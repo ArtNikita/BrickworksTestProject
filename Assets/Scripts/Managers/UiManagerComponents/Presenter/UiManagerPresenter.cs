@@ -40,12 +40,27 @@ namespace Managers.UiManagerComponents.Presenter
             _view.UpdateCurrentPrice(skillButton.GetPrice());
             if (_selectedButton != null && _selectedButton != skillButton) _selectedButton.Unselect();
             _selectedButton = skillButton;
+            SetupButtonsEnabling();
         }
+
+        private void SetupButtonsEnabling()
+        {
+            SetupLearnCurrentButtonEnabling();
+        }
+
+        private void SetupLearnCurrentButtonEnabling()
+        {
+            _view.SetLearnCurrentButtonInteractable(
+                _skillButtonsManager.SkillButtonCanBeLearned(_selectedButton, _earnedPoints)
+            );
+        }
+
 
         private void OnEarnPointsButtonClicked(object sender, EventArgs eventArgs)
         {
             _earnedPoints += PointsToEarnPerClick;
             _view.UpdateCurrentPoints(_earnedPoints);
+            SetupLearnCurrentButtonEnabling();
         }
 
         private void OnLearnCurrentButtonClicked(object sender, EventArgs e)

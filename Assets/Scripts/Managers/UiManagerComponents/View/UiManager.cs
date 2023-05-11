@@ -57,6 +57,16 @@ namespace Managers.UiManagerComponents.View
             _presenter.SkillButtonClicked(skillButton);
         }
 
+        public void SetLearnCurrentButtonInteractable(bool isInteractable)
+        {
+            learnCurrentButton.interactable = isInteractable;
+        }
+
+        public void SetForgetCurrentButtonInteractable(bool isInteractable)
+        {
+            forgetCurrentButton.interactable = isInteractable;
+        }
+
         private void OnEarnPoints()
         {
             EarnPoints?.Invoke(this, EventArgs.Empty);

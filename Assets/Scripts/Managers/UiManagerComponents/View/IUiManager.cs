@@ -13,5 +13,7 @@ namespace Managers.UiManagerComponents.View
         void UpdateCurrentPoints(int points);
         void UpdateCurrentPrice(int price);
         void OnSkillButtonSelected(ISkillButtonView view);
+        void SetLearnCurrentButtonInteractable(bool isInteractable);
+        void SetForgetCurrentButtonInteractable(bool isInteractable);
     }
 }

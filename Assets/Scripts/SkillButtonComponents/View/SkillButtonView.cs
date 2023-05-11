@@ -74,5 +74,10 @@ namespace SkillButtonComponents.View
         {
             return isLearned;
         }
+
+        public List<ISkillButtonView> GetConnectedSkills()
+        {
+            return new List<ISkillButtonView>(connectedSkills);
+        }
     }
 }
